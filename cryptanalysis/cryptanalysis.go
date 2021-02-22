@@ -1,6 +1,10 @@
 package cryptanalysis
 
-import "unicode"
+import (
+	"fmt"
+	"os"
+	"unicode"
+)
 
 // takes xor'd byte array and tests and scores text against English letter frequency
 // returns phraseScore
@@ -62,4 +66,26 @@ func IsASCII(s []byte) bool {
 		}
 	}
 	return true
+}
+
+func HammingDistance(s1 []byte, s2 []byte) int {
+	if len(s1) != len(s2) {
+		fmt.Println("Strings are not equal in length. Exiting...")
+		os.Exit(0)
+	}
+
+	hamDist := 0
+
+	for i := 0; i < len(s1); i++ {
+		valDiff := s1[i] ^ s2[i]
+		testString := fmt.Sprintf("%08b", valDiff)
+		fmt.Printf("%T\n", testString)
+		fmt.Println(testString)
+		for _, val := range testString {
+			if val == 49 {
+				hamDist += 1
+			}
+		}
+	}
+	return hamDist
 }
