@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// takes bye string and rune containing xor key and returns xor'd output
+// takes byte string and rune containing xor key and returns xor'd output
 func SingleByteXor(inBytes []byte, let int) []byte {
 	var outBytes []byte
 	for i := 0; i < len(inBytes); i++ {

@@ -79,8 +79,6 @@ func HammingDistance(s1 []byte, s2 []byte) int {
 	for i := 0; i < len(s1); i++ {
 		valDiff := s1[i] ^ s2[i]
 		testString := fmt.Sprintf("%08b", valDiff)
-		fmt.Printf("%T\n", testString)
-		fmt.Println(testString)
 		for _, val := range testString {
 			if val == 49 {
 				hamDist += 1
